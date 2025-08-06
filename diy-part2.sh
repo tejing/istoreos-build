@@ -11,7 +11,7 @@
 #
 
 # 修改openwrt登陆地址,把下面的 192.168.10.1 修改成你想要的就可以了
-#sed -i 's/192.168.100.1/192.168.10.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.100.1/192.168.50.1/g' package/base-files/files/bin/config_generate
 
 # 修改主机名字，把 iStore OS 修改你喜欢的就行（不能纯数字或者使用中文）
 # sed -i 's/OpenWrt/iStore OS/g' package/base-files/files/bin/config_generate
@@ -31,8 +31,8 @@ CONFIG_PACKAGE_nginx-ssl=y
 CONFIG_PACKAGE_nginx-ssl-util=y
 CONFIG_PACKAGE_nginx-util=y
 CONFIG_PACKAGE_nginx-mod-luci=y
-CONFIG_PACKAGE_luci-nginx=y" >> .config
-
-echo "CONFIG_PACKAGE_luci-app-pppoe-relay=y
+CONFIG_PACKAGE_luci-nginx=y
+CONFIG_PACKAGE_luci-app-pppoe-relay=y
+CONFIG_PACKAGE_luci-app-openclash=y
 CONFIG_PACKAGE_rp-pppoe-relay=y" >> .config
 
