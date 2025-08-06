@@ -36,6 +36,3 @@ CONFIG_PACKAGE_luci-nginx=y" >> .config
 echo "CONFIG_PACKAGE_luci-app-pppoe-relay=y
 CONFIG_PACKAGE_rp-pppoe-relay=y" >> .config
 
-echo "CONFIG_PACKAGE_coremark=y" >> .config
-cp -f $GITHUB_WORKSPACE/configfiles/coremark/coremark.sh package/base-files/files/bin/coremark.sh
-chmod 755 package/base-files/files/bin/coremark.sh
