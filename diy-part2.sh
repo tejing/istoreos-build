@@ -31,3 +31,4 @@ CONFIG_PACKAGE_luci-app-pppoe-relay=y
 CONFIG_PACKAGE_luci-app-openclash=y
 CONFIG_PACKAGE_rp-pppoe-relay=y' >> .config
 
+rm -rf package/feeds/third_party/luci-app-LingTiGameAcc
