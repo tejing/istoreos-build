@@ -45,12 +45,6 @@ jobs:
     steps:
     - name: 准备完成
       uses: actions/checkout@main
-      
-    - name: 创建工作目录
-      run: |
-        mkdir -p ${GITHUB_WORKSPACE}/workdir
-        chmod 777 ${GITHUB_WORKSPACE}/workdir
-        echo "WORKDIR=$PWD" >> $GITHUB_ENV
         
     - name: 检查服务器配置
       run: |
@@ -87,15 +81,16 @@ jobs:
         sudo -E apt-get -qq clean
         echo "------------------------------- 设置工作目录及时区 -------------------------------"
         sudo timedatectl set-timezone "$TZ"
-        # sudo mkdir -p /workdir
-        # sudo chown $USER:$GROUPS /workdir
+        sudo mkdir -p /mnt/workdir
+        sudo chown $USER:$GROUPS /mnt/workdir
+        sudo apt-get install automake autoconf --upgrade
 
     - name: 克隆源码
-      working-directory: ${{ env.WORKDIR }}/workdir
+      working-directory: /mnt/workdir
       run: |
         df -hT $PWD
         git clone $REPO_URL -b ${{ matrix.REPO_BRANCH }} openwrt
-        ln -sf ${{ env.WORKDIR }}/workdir/openwrt $GITHUB_WORKSPACE/openwrt
+        ln -sf /mnt/workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
     - name: 缓存构建动作
       uses: klever1988/cachewrtbuild@main
