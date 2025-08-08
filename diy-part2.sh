@@ -28,6 +28,5 @@ sed -i 's/192.168.100.1/192.168.50.1/g' package/base-files/files/bin/config_gene
 
 echo '
 CONFIG_PACKAGE_luci-app-pppoe-relay=y
-CONFIG_PACKAGE_luci-app-openclash=y
 CONFIG_PACKAGE_rp-pppoe-relay=y' >> .config
 
