@@ -9,7 +9,7 @@
 # File name: diy-part2.sh
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
-
+shopt -s extglob
 # 修改openwrt登陆地址,把下面的 192.168.10.1 修改成你想要的就可以了
 sed -i 's/192.168.100/192.168.50/g' package/base-files/files/bin/config_generate
 
