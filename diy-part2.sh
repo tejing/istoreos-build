@@ -40,7 +40,7 @@ sed -i \
 	-e "s/+nginx\( \|$\)/+nginx-ssl\1/" \
 	-e 's/+python\( \|$\)/+python3/' \
 	-e 's?../../lang?$(TOPDIR)/feeds/packages/lang?' \
-	package/feeds/kiddin9/*/Makefile
+	feeds/kiddin9/*/Makefile
 
 mv -f tmp/r81* feeds/kiddin9/
 
