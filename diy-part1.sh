@@ -20,15 +20,17 @@
 # echo 'src-git openclash https://github.com/vernesong/OpenClash' >>feeds.conf.default
 # echo 'src-git adguardhome https://github.com/rufengsuixing/luci-app-adguardhome' >>feeds.conf.default
 # echo 'src-git mosdns https://github.com/sbwml/luci-app-mosdns' >>feeds.conf.default
-function git_sparse_clone() {
-  branch="$1" repourl="$2" && shift 2
-  git clone --depth=1 -b $branch --single-branch --filter=blob:none --sparse $repourl
-  repodir=$(echo $repourl | awk -F '/' '{print $(NF)}')
-  cd $repodir && git sparse-checkout set $@
-  mv -f $@ ../package
-  cd .. && rm -rf $repodir
-}
-#git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
+sed -i '$a src-git kiddin9 https://github.com/kiddin9/kwrt-packages.git;main' feeds.conf.default
+
+#function git_sparse_clone() {
+#  branch="$1" repourl="$2" && shift 2
+#  git clone --depth=1 -b $branch --single-branch --filter=blob:none --sparse $repourl
+#  repodir=$(echo $repourl | awk -F '/' '{print $(NF)}')
+#  cd $repodir && git sparse-checkout set $@
+#  mv -f $@ ../package
+#  cd .. && rm -rf $repodir
+#}
+# git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
 
 date_version=$(date +"%Y%m%d%H")
 echo $date_version > version
