@@ -25,13 +25,13 @@ sed -i 's/192.168.100/192.168.50/g' package/base-files/files/bin/config_generate
 # CONFIG_PACKAGE_luci-app-adguardhome=y
 # CONFIG_PACKAGE_luci-app-openclash=y
 # ' >> .config
-status=$(curl -H "Authorization: token $GITHUB_TOKEN" -s "https://api.github.com/repos/kiddin9/kwrt-packages/actions/runs" | jq -r '.workflow_runs[0].status')
-echo "$status"
-while [[ "$status" == "in_progress" || "$status" == "queued" ]];do
-	echo "wait 5s"
-	sleep 5
-	status=$(curl -H "Authorization: token $GITHUB_TOKEN" -s "https://api.github.com/repos/kiddin9/kwrt-packages/actions/runs" | jq -r '.workflow_runs[0].status')
-done
+#status=$(curl -H "Authorization: token $GITHUB_TOKEN" -s "https://api.github.com/repos/kiddin9/kwrt-packages/actions/runs" | jq -r '.workflow_runs[0].status')
+#echo "$status"
+#while [[ "$status" == "in_progress" || "$status" == "queued" ]];do
+#	echo "wait 5s"
+#	sleep 5
+#	status=$(curl -H "Authorization: token $GITHUB_TOKEN" -s "https://api.github.com/repos/kiddin9/kwrt-packages/actions/runs" | jq -r '.workflow_runs[0].status')
+#done
 
 mv -f feeds/kiddin9/r81* tmp/
 
