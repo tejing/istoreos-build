@@ -33,7 +33,7 @@ sed -i 's/192.168.100/192.168.50/g' package/base-files/files/bin/config_generate
 #	status=$(curl -H "Authorization: token $GITHUB_TOKEN" -s "https://api.github.com/repos/kiddin9/kwrt-packages/actions/runs" | jq -r '.workflow_runs[0].status')
 #done
 
-mv -f feeds/kiddin9/r81* tmp/
+mv -f package/feeds/kiddin9/r81* tmp/
 
 sed -i \
 	-e "s/+\(luci\|luci-ssl\|uhttpd\)\( \|$\)/\2/" \
@@ -42,7 +42,9 @@ sed -i \
 	-e 's?../../lang?$(TOPDIR)/feeds/packages/lang?' \
 	package/feeds/kiddin9/*/Makefile
 
-mv -f tmp/r81* feeds/kiddin9/
+mv -f tmp/r81* package/feeds/kiddin9/
+
+rm -rf package/feeds/kiddin9/{xtables-wgobfs,shortcut-fe}
 
 echo 'CONFIG_PACKAGE_luci-app-mosdns=y
 CONFIG_PACKAGE_luci-app-pppoe-relay=y' >> .config
