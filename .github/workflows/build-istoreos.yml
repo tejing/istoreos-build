@@ -123,7 +123,7 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE_PATH ] && mv $CONFIG_FILE_PATH openwrt/$CONFIG_FILE
-        sed -i "1a GITHUB_TOKEN=${{ env.GITHUB_TOKEN }}" $DIY_P2_SH
+        # sed -i "1a GITHUB_TOKEN=${{ env.GITHUB_TOKEN }}" $DIY_P2_SH
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
