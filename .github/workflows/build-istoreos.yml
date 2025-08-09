@@ -112,7 +112,10 @@ jobs:
       run: cd openwrt && ./scripts/feeds update -a
 
     - name: 安装 feeds
-      run: cd openwrt && ./scripts/feeds install -a
+      run: |
+       cd openwrt 
+       [ -e ./scripts/feeds/kiddin9 ] && ./scripts/feeds install -a -p kiddin9 -f 
+       ./scripts/feeds install -a
 
     - name: 加载自定义配置
       env:
